@@ -1,4 +1,11 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  compiler: {
+    relay: {
+      src: "./",
+      language: "typescript",
+    },
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
