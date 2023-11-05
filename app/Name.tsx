@@ -4,19 +4,24 @@ import { NameQuery } from "@/app/__generated__/NameQuery.graphql";
 import { EntryPointComponent, graphql, usePreloadedQuery } from "react-relay";
 
 type PreloadedQueries = { nameQueryRef: NameQuery };
+type Props = { title: string };
 
-// TODO: What to do with the args?
-const Name: EntryPointComponent<PreloadedQueries, any, any, any> = (props) => {
+// TODO: Why are nested entrypoints second? - props would be way more natural
+const Name: EntryPointComponent<PreloadedQueries, any, Props> = ({ queries, props }) => {
   const data = usePreloadedQuery(
     graphql`
       query NameQuery @preloadable {
         name
       }
     `,
-    props.queries.nameQueryRef
+    queries.nameQueryRef
   );
 
-  return <div>Name: {data.name}</div>;
+  return (
+    <div>
+      EntryPoint Name: {data.name} ({props.title})
+    </div>
+  );
 };
 
 export default Name;

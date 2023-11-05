@@ -1,4 +1,13 @@
-import { Environment, Network, RecordSource, Store, FetchFunction, Observable, GraphQLResponse, RelayFeatureFlags } from "relay-runtime";
+import {
+  Environment,
+  Network,
+  RecordSource,
+  Store,
+  FetchFunction,
+  Observable,
+  GraphQLResponse,
+  RelayFeatureFlags,
+} from "relay-runtime";
 
 RelayFeatureFlags.ENABLE_LOAD_QUERY_REQUEST_DEDUPING = true;
 
@@ -24,7 +33,7 @@ function createRelayEnvironment() {
   return new Environment({
     network: Network.create(fetchFn),
     store: new Store(new RecordSource()),
-    log: (e) => console.log(e),
+    // log: (e) => console.log(e),
   });
 }
 

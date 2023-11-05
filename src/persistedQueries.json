@@ -1,3 +1,4 @@
 {
-  "813afd3121599143f2d5bd004bd50fb6": "query NameQuery {\n  name\n}\n"
+  "813afd3121599143f2d5bd004bd50fb6": "query NameQuery {\n  name\n}\n",
+  "ea1b6e36b9efbaefee37cdc45531c16c": "query LazyNameQuery {\n  name\n}\n"
 }
