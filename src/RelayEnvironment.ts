@@ -1,16 +1,20 @@
-import { Environment, Network, RecordSource, Store, FetchFunction, Observable, GraphQLResponse } from "relay-runtime";
+import { Environment, Network, RecordSource, Store, FetchFunction, Observable, GraphQLResponse, RelayFeatureFlags } from "relay-runtime";
+
+RelayFeatureFlags.ENABLE_LOAD_QUERY_REQUEST_DEDUPING = true;
 
 const fetchFn: FetchFunction = (request, variables) => {
   return Observable.create<GraphQLResponse>((sink) => {
-    console.log("Fetching name data...");
+    (async () => {
+      console.log("Fetching name data...");
 
-    sleep(1000);
+      await sleep(2000);
 
-    console.log("Fetched name data");
+      console.log("Fetched name data");
 
-    sink.next({ data: { name: "Tobias" } });
+      sink.next({ data: { name: "Tobias" } });
 
-    sink.complete();
+      sink.complete();
+    })();
   });
 };
 
@@ -20,6 +24,7 @@ function createRelayEnvironment() {
   return new Environment({
     network: Network.create(fetchFn),
     store: new Store(new RecordSource()),
+    log: (e) => console.log(e),
   });
 }
 

@@ -16,9 +16,6 @@ const Name: EntryPointComponent<PreloadedQueries, any, any, any> = (props) => {
     props.queries.nameQueryRef
   );
 
-  console.log({ data, preloadedQuery: props.queries.nameQueryRef });
-
-  // TODO: name is undefined?
   return <div>Name: {data.name}</div>;
 };
 
