@@ -1,7 +1,7 @@
 import type { EntryPoint } from "react-relay";
 import type Name from "./Name";
 import JSResource from "@/src/JSResource";
-import NameQuery from "./__generated__/NameQuery.graphql";
+import NameQueryParameters from "./__generated__/NameQuery$parameters";
 import { sleep } from "@/src/RelayEnvironment";
 
 type NameComponentType = typeof Name;
@@ -12,12 +12,7 @@ const TodoAppEntryPoint: EntryPoint<NameComponentType, Params> = {
     return {
       queries: {
         nameQueryRef: {
-          // parameters: NameQuery,
-          parameters: {
-            kind: "PreloadableConcreteRequest",
-            // TOOD: With @preloadable we should be able to import this from a slimmer file
-            params: NameQuery.params,
-          },
+          parameters: NameQueryParameters,
           variables: {},
         },
       },
