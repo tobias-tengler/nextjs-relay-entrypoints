@@ -9,7 +9,7 @@ type PreloadedQueries = { nameQueryRef: NameQuery };
 const Name: EntryPointComponent<PreloadedQueries, any, any, any> = (props) => {
   const data = usePreloadedQuery(
     graphql`
-      query NameQuery {
+      query NameQuery @preloadable {
         name
       }
     `,

@@ -12,12 +12,12 @@ const TodoAppEntryPoint: EntryPoint<NameComponentType, Params> = {
     return {
       queries: {
         nameQueryRef: {
-          parameters: NameQuery,
-          // parameters: {
-          //   kind: "PreloadableConcreteRequest",
-          //   // TOOD: With @preloadable we should be able to import this from a slimmer file
-          //   params: NameQuery.params,
-          // },
+          // parameters: NameQuery,
+          parameters: {
+            kind: "PreloadableConcreteRequest",
+            // TOOD: With @preloadable we should be able to import this from a slimmer file
+            params: NameQuery.params,
+          },
           variables: {},
         },
       },
